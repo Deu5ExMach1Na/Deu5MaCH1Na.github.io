@@ -16,15 +16,15 @@
   <meta name="description" content="OIer From SC">
   <meta name="author" content="Deu5ExMach1na">
   <meta name="keywords" content="">
-  <meta name="description" content="描述：尺取法是一种比较基础的算法,一般用来解决具有单调性的区间问题. 维护两个指针l,r. 每次确定区间的左端点,让r不断向右移动,直到满足条件停下 大多需要证明区间的单调性,即l++时 r不会像左移动,此时l,r是最优或者需要将r++达到最优 例题：[]: http:&#x2F;&#x2F;poj.org&#x2F;problem?id&#x3D;3061    “POj-Subsequence” 注意到l++时,若此时[l,r]上的">
+  <meta name="description" content="描述：尺取法是一种比较基础的算法,一般用来解决具有单调性的区间问题. 维护两个指针l,r. 每次确定区间的左端点,让r不断向右移动,直到满足条件停下 大多需要证明区间的单调性,即l++时 r不会像左移动,此时l,r是最优或者需要将r++达到最优 例题：Subsequence注意到l++时,若此时[l,r]上的和满足条件,则一定是最优的,若不满足条件则将r++ 原因：当[l,r]的区间和小于SS时,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="尺取法">
 <meta property="og:url" content="http://example.com/2021/11/14/%E5%B0%BA%E5%8F%96%E6%B3%95/index.html">
 <meta property="og:site_name" content="My Blog">
-<meta property="og:description" content="描述：尺取法是一种比较基础的算法,一般用来解决具有单调性的区间问题. 维护两个指针l,r. 每次确定区间的左端点,让r不断向右移动,直到满足条件停下 大多需要证明区间的单调性,即l++时 r不会像左移动,此时l,r是最优或者需要将r++达到最优 例题：[]: http:&#x2F;&#x2F;poj.org&#x2F;problem?id&#x3D;3061    “POj-Subsequence” 注意到l++时,若此时[l,r]上的">
+<meta property="og:description" content="描述：尺取法是一种比较基础的算法,一般用来解决具有单调性的区间问题. 维护两个指针l,r. 每次确定区间的左端点,让r不断向右移动,直到满足条件停下 大多需要证明区间的单调性,即l++时 r不会像左移动,此时l,r是最优或者需要将r++达到最优 例题：Subsequence注意到l++时,若此时[l,r]上的和满足条件,则一定是最优的,若不满足条件则将r++ 原因：当[l,r]的区间和小于SS时,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-14T02:43:53.000Z">
-<meta property="article:modified_time" content="2021-11-14T02:52:11.419Z">
+<meta property="article:modified_time" content="2021-11-14T02:55:35.926Z">
 <meta property="article:author" content="Deu5ExMach1na">
 <meta property="article:tag" content="尺取法">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      615 字
+      576 字
     </span>
   
 
@@ -240,8 +240,7 @@
               <h2 id="描述："><a href="#描述：" class="headerlink" title="描述："></a>描述：</h2><p>尺取法是一种比较基础的算法,一般用来解决具有单调性的区间问题.</p>
 <p>维护两个指针l,r. 每次确定区间的左端点,让r不断向右移动,直到满足条件停下</p>
 <p>大多需要证明区间的单调性,即l++时 r不会像左移动,此时l,r是最优或者需要将r++达到最优</p>
-<h2 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h2><p>[]: <a target="_blank" rel="noopener" href="http://poj.org/problem?id=3061">http://poj.org/problem?id=3061</a>    “POj-Subsequence”</p>
-<p>注意到l++时,若此时[l,r]上的和满足条件,则一定是最优的,若不满足条件则将r++</p>
+<h2 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h2><h3 id="Subsequence"><a href="#Subsequence" class="headerlink" title="Subsequence"></a><a target="_blank" rel="noopener" href="http://poj.org/problem?id=3061">Subsequence</a></h3><p>注意到l++时,若此时[l,r]上的和满足条件,则一定是最优的,若不满足条件则将r++</p>
 <p>原因：当[l,r]的区间和小于S<em>S</em>时,[l,r-1]就不可能大于或者等于S<em>S</em>,因为a[r]<em>a</em>[<em>r</em>]是个正数.[l+1,r-1]就更不可能,所以当l向右移动的时候,r不可能向左移动.</p>
 <p>Code:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> l=<span class="hljs-number">1</span>,r=<span class="hljs-number">0</span>,now=<span class="hljs-number">0</span>;l&lt;=n;)&#123;<br>  <span class="hljs-keyword">while</span> (now&lt;S&amp;&amp;r&lt;n) now+=a[++r]; <span class="hljs-comment">//表示先把r+1,再执行now+=a[r].注意要使r&lt;=n.</span><br>  <span class="hljs-comment">/*当now&lt;S的时候,我们不断地向右延伸区间,直到now&gt;=S*/</span><br>  <span class="hljs-keyword">if</span> (now&lt;S) <span class="hljs-keyword">break</span>;<br>  <span class="hljs-comment">/*这时候l已经过大了,r到n也满足不了条件,这时要退出循环,否则下面的ans会被错误更新.*/</span><br>  ans=<span class="hljs-built_in">min</span>(ans,r-l+<span class="hljs-number">1</span>); <span class="hljs-comment">// [l,r]区间的长度</span><br>  now-=a[l++]; <span class="hljs-comment">// 这里就是先执行now-=a[l],然后再执行l+=1.</span><br>&#125;<br></code></pre></td></tr></table></figure>
